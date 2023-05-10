@@ -1,11 +1,4 @@
-# Demo 2
+# Some Programming exercise to practice!
 
-some test are here!
-
-## changes
-
-new text
-
-## c
-
-new c file added
+C programming
+Linear algebra in python
