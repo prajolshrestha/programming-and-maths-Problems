@@ -1,0 +1,28 @@
+"""
+1. Installing a Package:
+    pip install numpy
+
+2. Installing a Specific Version of a Package:
+    pip install numpy==1.21.0
+
+3. Upgrading a Package:
+    pip install --upgrade numpy
+
+4. Listing Installed Packages:
+    pip list
+    pip freeze
+
+5. Uninstalling a Package:
+    pip uninstall numpy
+
+6. Installing Packages from a Requirements File:
+    pip install -r requirements.txt
+
+7. Pip version
+    pip --version
+    pip show numpy
+
+
+"""
+
+

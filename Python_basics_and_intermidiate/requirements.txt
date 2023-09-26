@@ -1,0 +1,8 @@
+numpy==1.23.0
+# Exact version: package-name==1.2.3
+# Minimum version: package-name>=1.2.3
+# Maximum version: package-name<=1.2.3
+# Version range: package-name>=1.2.3,<2.0.0
+
+#generate a requirements.txt file based on the currently installed packages using the following command:
+#pip freeze > requirements.txt
