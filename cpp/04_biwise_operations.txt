@@ -1,0 +1,20 @@
+// Bitwise operations and Bitfields
+
+When implementing an operating system, we often have to manipulate the hardware's state directly by writing to its control registers.
+The hardware's designers often try to implement their hardware as efficient as possible, 
+which may lead to unrelated control bits being joined into a single byte.
+
+We could assemble these configuration bytes using C or C++'s bitwise operations. 
+These are the bitwise AND (&), OR (|), NOT (~), XOR (^) as well as both shift operations (<<, >>). 
+Using these we could write a wrapper function that does the job of assembling the two bytes for us like in the example below:
+
+char make_attribute(char foreground, char background, char blink) {
+     foreground &= 0xf; // 0000 1111
+     background &= 0x7; // 0000 0111
+     blink      &=   1; // 0000 0001
+ 
+     background <<=  4; // 0000 0XXX -> 0XXX 0000
+     blink      <<=  7; // 0000 000X -> X000 0000
+ 
+     return foreground | background | blink; // Bbbb ffff
+}

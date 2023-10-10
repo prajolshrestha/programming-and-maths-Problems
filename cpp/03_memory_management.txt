@@ -1,0 +1,44 @@
+// Memory management in operating system
+
+1. Global variables: 
+    These are either in the data or the BSS segment. They are initialized, before a program's main()-function is called. 
+    They are filled with zeros, if they have not been initialized with a certain value in the program's source.
+
+2. Local variables:
+     are pushed onto the stack. They are valid only in the context of the function they belong to. 
+     With that in mind it makes sense that they are no longer valid once the function returns, 
+     since the function's stack frame is removed from the stack.
+
+3. Objects:
+     on the heap. In an environment with a complete libc you may allocate typeless (void *) memory using the library function malloc(3). 
+     The library itself utilizes the system calls brk(2) & mmap(2). When programming in C++ we usually do not call malloc(3) directly, 
+     but use the language's new-operator to create new objects.
+
+However, we cannot rely on Linux's libc implementation when building an operating system and, 
+thus, do not have dynamic memory management at our disposal. 
+
+When working with local variables we have to take care when it comes to the size of objects. 
+The stack of our operating system is only 4096 bytes large and one common mistake is to forget about that fact 
+and allocate an object that is too large, 
+leading to a stack overflow:
+
+struct huge_object {
+  char buffer[5000];
+};
+void foo() {
+   huge_object barfoo;
+}
+
+This will not cause our operating system to crash, but it will corrupt any data structure that is located directly below the stack in memory. 
+This in turn may lead to nondeterministic behaviour of your operating system, as it fills other global variables with arbitrary data.
+
+
+Another common mistake would be to return the address of a local variable. As we have discussed earlier, 
+the lifetime of a local variable allocated on the stack ends once its surrounding function returns.
+That means that once the function returns the returned address is no longer valid, which also may result in memory corruption bugs.
+
+object_t * foo() {
+    object_t ret;
+    ret.foo = 80;
+    return &ret;
+}

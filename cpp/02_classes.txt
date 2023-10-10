@@ -1,0 +1,64 @@
+// Struct, Classes and Methods
+
+/*
+C++ is an object-oriented programming language.
+
+It allows us to group multiple variables of varying types into composite data types.
+
+Additionally, C++ allows us define methods of a structure. 
+Methods are functions that work on the constituents of the data structure.
+
+Keyword struct and class in C++, is actually almost identical. 
+All members of structs have public visibility by default, while the default visibility of classes is private.
+*/
+struct foobar {
+   int    foo;
+   double bar;
+
+   
+   int calc(int x);
+};
+
+int foobar::calc(int x){
+    return (foo * 23) + x;
+}
+
+// Regular function using pointer
+int calc(foobar *this, int x){
+  return (foo*23) + x;    
+}
+
+/*
+output: Assembly level language
+
+0000055a <_ZN6foobar4calcEi>:
+ 55a:   8b 44 24 04             mov    0x4(%esp),%eax     # Implicit paramter: this # object-oriented abstraction
+ 55e:   6b 00 17                imul   $0x17,(%eax),%eax  # Multiply by 23
+ 561:   03 44 24 08             add    0x8(%esp),%eax     # Explicit paramter: x
+ 565:   c3  
+*/
+
+
+// Inheritance
+struct foobar_premium : public foobar{ //foobar is base class
+    bool is_premium(){
+        foo -= 1;
+        return true;
+    };
+};
+
+// Another example
+
+class Base1 {
+    int a;
+    int b;
+};
+ 
+class Base2 {
+    int c;
+    int d;
+};
+ 
+class Derived : public Base1, public Base2 {
+    int xx;
+};
