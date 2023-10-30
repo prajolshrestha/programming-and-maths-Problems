@@ -11,5 +11,5 @@ Example:
 # Run
 Example: 
 
-         ./refrences
+         ./references
 
