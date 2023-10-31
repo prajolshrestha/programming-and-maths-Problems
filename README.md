@@ -1,7 +1,7 @@
 # Some Programming exercise to practice!
 
 - C programming
-- C++
-- Python
+- C++ from scratch
+- Python from scratch
 - Linear algebra in python
 - Fourier Transform in python
