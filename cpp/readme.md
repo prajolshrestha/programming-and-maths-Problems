@@ -1,6 +1,6 @@
 ## C++:
 
-- Basics
-- Software Development Basics
-- Parallel Programming
+- Basics [done]
+- Software Development Basics [working..]
+- Parallel Programming [TODO]
 - 
