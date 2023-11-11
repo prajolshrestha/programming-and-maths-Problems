@@ -1,1 +1,6 @@
-C++ practice
+## C++:
+
+- Basics
+- Software Development Basics
+- Parallel Programming
+- 
