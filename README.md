@@ -8,3 +8,10 @@
 ## Mathematics 
 - Linear algebra from scratch in python [advanced]
 - Fourier Transform from scratch in python [advanced]
+
+
+
+## Credits:
+- Youtube
+- Stack Overflow
+- 
