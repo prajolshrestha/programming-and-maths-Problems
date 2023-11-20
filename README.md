@@ -1,4 +1,4 @@
-# Some Programming exercise to practice!
+# Some Programming exercises to practice!
 
 ## Programming
 - C programming [working...]
@@ -6,8 +6,8 @@
 - Python from scratch [complete]
 
 ## Mathematics 
-- Linear algebra from scratch in python [advanced]
-- Fourier Transform from scratch in python [advanced]
+- Linear algebra from scratch in Python [advanced]
+- Fourier Transform from scratch in Python [advanced]
 
 
 
