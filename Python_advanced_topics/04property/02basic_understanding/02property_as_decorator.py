@@ -1,18 +1,24 @@
 """
-    Property with decorator
+    @Property decorator --> USED  to create read-only properties or to define a getter method for a class attribute.
 
     We reuse temperature name while defining our getter and setter functions.
+
+    Intuition: It allows us to access the attribute like an ordinary attribute, 
+               but behind the scenes, a method is called to compute the value.
+
+    Take away: - for Encapsulation
+               - allows you to add custom logic to attribute access without changing the way you interact with the class externally.
 
 """
 
 class Celsius:
     def __init__(self, temperature=0):
-        self.temperature = temperature
+        self.temperature = temperature # we can also make this attribute private
     
     def to_fahrenheit(self):
         return (self.temperature * 1.8) + 32
     
-    @property
+    @property # Read only properties
     def temperature(self):
         print("Getting value ...")
         return self._temperature
