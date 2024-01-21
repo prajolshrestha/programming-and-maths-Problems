@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wall -Werror -O2 -march=native CMakeFiles/hello.dir/hello.cpp.o -o hello 

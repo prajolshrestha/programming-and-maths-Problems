@@ -1,0 +1,3 @@
+/home/codebind/cpp/software_development/cmake_basics/cmake1/build/CMakeFiles/hello.dir
+/home/codebind/cpp/software_development/cmake_basics/cmake1/build/CMakeFiles/edit_cache.dir
+/home/codebind/cpp/software_development/cmake_basics/cmake1/build/CMakeFiles/rebuild_cache.dir
