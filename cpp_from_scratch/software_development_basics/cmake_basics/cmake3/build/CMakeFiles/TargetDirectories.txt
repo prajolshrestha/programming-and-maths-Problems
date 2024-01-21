@@ -1,0 +1,3 @@
+/home/codebind/programming-and-maths-Problems/cpp_from_scratch/software_development_basics/cmake_basics/cmake3/build/CMakeFiles/threads.dir
+/home/codebind/programming-and-maths-Problems/cpp_from_scratch/software_development_basics/cmake_basics/cmake3/build/CMakeFiles/edit_cache.dir
+/home/codebind/programming-and-maths-Problems/cpp_from_scratch/software_development_basics/cmake_basics/cmake3/build/CMakeFiles/rebuild_cache.dir

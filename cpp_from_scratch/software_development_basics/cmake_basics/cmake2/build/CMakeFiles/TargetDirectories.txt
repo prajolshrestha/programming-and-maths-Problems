@@ -1,0 +1,4 @@
+/home/codebind/programming-and-maths-Problems/cpp_from_scratch/software_development_basics/cmake_basics/cmake2/build/CMakeFiles/math.dir
+/home/codebind/programming-and-maths-Problems/cpp_from_scratch/software_development_basics/cmake_basics/cmake2/build/CMakeFiles/main.dir
+/home/codebind/programming-and-maths-Problems/cpp_from_scratch/software_development_basics/cmake_basics/cmake2/build/CMakeFiles/edit_cache.dir
+/home/codebind/programming-and-maths-Problems/cpp_from_scratch/software_development_basics/cmake_basics/cmake2/build/CMakeFiles/rebuild_cache.dir

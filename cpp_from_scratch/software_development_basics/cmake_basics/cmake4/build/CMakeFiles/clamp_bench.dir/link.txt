@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wall -Werror -O2 -march=native CMakeFiles/clamp_bench.dir/clamp_bench.cpp.o -o clamp_bench  /usr/lib/x86_64-linux-gnu/libbenchmark.so.1.6.1 
