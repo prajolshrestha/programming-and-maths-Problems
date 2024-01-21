@@ -1,13 +1,22 @@
 # Some Programming exercises to practice!
 
 ## Programming
+- Matlab from scratch
+- Python from scratch [complete]
 - C programming [working...]
 - C++ from scratch [complete]
-- Python from scratch [complete]
+- Rust from scratch
+
+## Accelerated Computing
+- Parallel cpp
+    - Basics  
+    - OpenMP
+    - MPI
+- CUDA 
 
 ## Mathematics 
 - Linear algebra from scratch in Python [advanced]
-- Fourier Transform from scratch in Python [advanced]
+
 
 
 
