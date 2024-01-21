@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/main.dir/main.cpp.o -o main  -Wl,-rpath,/home/codebind/programming-and-maths-Problems/cpp_from_scratch/software_development_basics/cmake_basics/cmake5/build/math ../math/libmath.so 
