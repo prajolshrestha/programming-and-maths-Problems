@@ -7,6 +7,10 @@
 #include <AssetMan.hpp>
 #include <StateMan.hpp>
 
+enum AssetID {
+    MAIN_FONT = 0
+};
+
 struct Context{ // It holds asset_manager, state_manager & render_window
     
     // This structure holds unique_ptr to all members // Define pointers
