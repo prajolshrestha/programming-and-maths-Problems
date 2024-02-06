@@ -13,6 +13,10 @@ _start:
     mov ecx, msg ;bytes to sys_write  ; it holds string pointer
     mov edx, len ;number of bytes to write ; it holds string length
     int 0x80     ; perform system call ; interrupt
+    
     mov eax, 1   ;sys_exit system call
     mov ebx, 0   ;exit status is 0 ; means program run successfully
     int 0x80
+
+; vim /usr/include/asm/unistd_32.h  --> this header file provides access to various POSIX OS APIs
+; man 2 write      --> to see info about sys call
