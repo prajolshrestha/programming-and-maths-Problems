@@ -1,5 +1,6 @@
 #include "GamePlay.hpp"
 #include "GameOver.hpp"
+#include "PauseGame.hpp"
 
 #include <SFML/Window/Event.hpp>
 
@@ -7,7 +8,7 @@
 #include <time.h>
 
 GamePlay::GamePlay(std::shared_ptr<Context>& context) : 
-m_context(context), m_snakeDirection({16.f,0.f}), m_elapsedTime(sf::Time::Zero){
+m_context(context), m_snakeDirection({16.f,0.f}), m_elapsedTime(sf::Time::Zero), m_score(0), m_isPaused(false){
 
     srand(time(nullptr)); // random number generator
 }
@@ -51,6 +52,12 @@ void GamePlay::Init() {
     // Initialize snake
     m_snake.Init(m_context->m_assets->GetTexture(SNAKE));
 
+    // Score
+    m_scoreText.setFont(m_context->m_assets->GetFont(MAIN_FONT));
+    m_scoreText.setString("Score : " + std::to_string(m_score));
+    m_scoreText.setCharacterSize(15);
+    //m_scoreText.setColor();
+
 };
 void GamePlay::ProcessInput() {
     // Window update
@@ -78,6 +85,9 @@ void GamePlay::ProcessInput() {
             case sf::Keyboard::Right:
                 newDirection = {16.f, 0.f};
                 break;
+            case sf::Keyboard::Escape:
+                m_context->m_states->Add(std::make_unique<PauseGame>(m_context));
+                break;
             
             default:
                 break;
@@ -91,43 +101,53 @@ void GamePlay::ProcessInput() {
     }
 };
 void GamePlay::Update(sf::Time deltaTime) {
-    m_elapsedTime += deltaTime; // controls the speed of snake
+    
+    if(!m_isPaused){
 
-    if (m_elapsedTime.asSeconds() > 0.1){
+        m_elapsedTime += deltaTime; // controls the speed of snake
 
-        bool isOnWall = false;
+        if (m_elapsedTime.asSeconds() > 0.1){
 
-        for (auto& wall : m_walls){
-            if (m_snake.IsOn(wall)){  // if collision with wall
-        
-                // Game over state
-                m_context->m_states->Add(std::make_unique<GameOver>(m_context), true);
-                break;
+
+            for (auto& wall : m_walls){
+                if (m_snake.IsOn(wall)){  // if collision with wall
+            
+                    // Game over state
+                    m_context->m_states->Add(std::make_unique<GameOver>(m_context), true);
+                    break;
+                }
             }
+            
+            if (m_snake.IsOn(m_food)){ // if collision with food
+                m_snake.Grow(m_snakeDirection);
+
+                int x = 0, y = 0; // new coordinates for food sprites
+
+                // we need the loc of food within the limits of render window
+                //x = rand() % m_context->m_window->getSize().x;
+                //y = rand() % m_context->m_window->getSize().y;
+
+                // we want loc of food inside of wall , not on wall
+                x = std::clamp<int>(rand() % m_context->m_window->getSize().x, 16, m_context->m_window->getSize().x - 2*16);
+                y = std::clamp<int>(rand() % m_context->m_window->getSize().y, 16, m_context->m_window->getSize().y - 2*16);
+
+
+                m_food.setPosition(x,y);
+                // increase score when food is eaten
+                m_score += 10;
+                m_scoreText.setString("Score : " + std::to_string(m_score));
+            }
+            else {
+                m_snake.Move(m_snakeDirection); // move snake
+            }
+
+            if (m_snake.IsSelfIntersecting()){
+                m_context->m_states->Add(std::make_unique<GameOver>(m_context), true);
+                
+            }
+
+            m_elapsedTime = sf::Time::Zero;
         }
-        
-        if (m_snake.IsOn(m_food)){ // if collision with food
-            m_snake.Grow(m_snakeDirection);
-
-            int x = 0, y = 0; // new coordinates for food sprites
-
-            // we need the loc of food within the limits of render window
-            //x = rand() % m_context->m_window->getSize().x;
-            //y = rand() % m_context->m_window->getSize().y;
-
-            // we want loc of food inside of wall , not on wall
-            x = std::clamp<int>(rand() % m_context->m_window->getSize().x, 16, m_context->m_window->getSize().x - 2*16);
-            y = std::clamp<int>(rand() % m_context->m_window->getSize().y, 16, m_context->m_window->getSize().y - 2*16);
-
-
-            m_food.setPosition(x,y);
-        }
-        else {
-            m_snake.Move(m_snakeDirection); // move snake
-        }
-
-
-        m_elapsedTime = sf::Time::Zero;
     }
     
 };
@@ -140,11 +160,12 @@ void GamePlay::Draw() {
     }
     m_context->m_window->draw(m_food); // Draw food
     m_context->m_window->draw(m_snake); // Draw snake
+    m_context->m_window->draw(m_scoreText); // Draw score text
     m_context->m_window->display();
 };
 void GamePlay::Pause() {
-
+    m_isPaused = true;
 };
 void GamePlay::Start() {
-
+    m_isPaused = false;
 };
