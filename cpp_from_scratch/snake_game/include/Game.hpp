@@ -8,7 +8,11 @@
 #include <StateMan.hpp>
 
 enum AssetID {
-    MAIN_FONT = 0
+    MAIN_FONT = 0,
+    GRASS,
+    FOOD,
+    WALL,
+    SNAKE
 };
 
 struct Context{ // It holds asset_manager, state_manager & render_window

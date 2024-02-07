@@ -1,39 +1,37 @@
-#include "MainMenu.hpp"
+#include "GameOver.hpp"
 #include "GamePlay.hpp"
 
 #include <SFML/Window/Event.hpp>
 
-MainMenu::MainMenu(std::shared_ptr<Context>& context) 
+GameOver::GameOver(std::shared_ptr<Context>& context) 
         : m_context(context),
-        m_isPlayButtonSelected(true), m_isPlayButtonPressed(false),
+        m_isRetryButtonSelected(true), m_isRetryButtonPressed(false),
         m_isExitButtonSelected(false), m_isExitButtonPressed(false)
 {
 
 }
-
-MainMenu::~MainMenu() {
+GameOver::~GameOver() {
 
 }
-
-void MainMenu::Init() {
+void GameOver::Init() {
     m_context->m_assets->AddFont(MAIN_FONT, "assets/fonts/Pacifico-Regular.ttf"); // Load Font
 
     // Initialize game Title
-    m_gameTitle.setFont(m_context->m_assets->GetFont(MAIN_FONT)); // get the loaded font and set it to gameTitle
-    m_gameTitle.setString("Snake Game"); // add title   
-    m_gameTitle.setOrigin(m_gameTitle.getLocalBounds().width / 2,
-                            m_gameTitle.getLocalBounds().height / 2);
-    m_gameTitle.setPosition(m_context->m_window->getSize().x/2,
+    m_gameOverTitle.setFont(m_context->m_assets->GetFont(MAIN_FONT)); // get the loaded font and set it to gameTitle
+    m_gameOverTitle.setString("Game Over"); // add title   
+    m_gameOverTitle.setOrigin(m_gameOverTitle.getLocalBounds().width / 2,
+                            m_gameOverTitle.getLocalBounds().height / 2);
+    m_gameOverTitle.setPosition(m_context->m_window->getSize().x/2,
                             m_context->m_window->getSize().y/2 - 150.f); 
 
     // Initialize Play button
-    m_playButton.setFont(m_context->m_assets->GetFont(MAIN_FONT)); // get the loaded font and set it to gameTitle
-    m_playButton.setString("Play"); // add title
-    m_playButton.setOrigin(m_playButton.getLocalBounds().width / 2,
-                            m_playButton.getLocalBounds().height / 2);
-    m_playButton.setPosition(m_context->m_window->getSize().x/2,
+    m_retryButton.setFont(m_context->m_assets->GetFont(MAIN_FONT)); // get the loaded font and set it to gameTitle
+    m_retryButton.setString("Retry"); // add title
+    m_retryButton.setOrigin(m_retryButton.getLocalBounds().width / 2,
+                            m_retryButton.getLocalBounds().height / 2);
+    m_retryButton.setPosition(m_context->m_window->getSize().x/2,
                             m_context->m_window->getSize().y/2 - 25.f);
-    m_playButton.setCharacterSize(20);
+    m_retryButton.setCharacterSize(20);
 
     // Initialize Exit button
     m_exitButton.setFont(m_context->m_assets->GetFont(MAIN_FONT)); // get the loaded font and set it to gameTitle
@@ -44,7 +42,7 @@ void MainMenu::Init() {
                             m_context->m_window->getSize().y/2 + 25.f);
     m_exitButton.setCharacterSize(20);
 }
-void MainMenu::ProcessInput() {
+void GameOver::ProcessInput() {
     // Window update
     sf::Event event;
     while (m_context->m_window->pollEvent(event))
@@ -60,24 +58,24 @@ void MainMenu::ProcessInput() {
             {
                 case sf::Keyboard::Up:{
 
-                    if (!m_isPlayButtonSelected) {
-                        m_isPlayButtonSelected = true;
+                    if (!m_isRetryButtonSelected) {
+                        m_isRetryButtonSelected = true;
                         m_isExitButtonSelected = false;
                     }
                     break;
                 }
                 case sf::Keyboard::Down:{
                     if (!m_isExitButtonSelected) {
-                        m_isPlayButtonSelected = false;
+                        m_isRetryButtonSelected = false;
                         m_isExitButtonSelected = true;
                     }
                     break;
                 }
                 case sf::Keyboard::Return:{ // Detect key press of Enter key
-                    m_isPlayButtonPressed = false;
+                    m_isRetryButtonPressed = false;
                     m_isExitButtonPressed = false;
-                    if (m_isPlayButtonSelected) {
-                        m_isPlayButtonPressed = true;
+                    if (m_isRetryButtonSelected) {
+                        m_isRetryButtonPressed = true;
                     } else {
                         m_isExitButtonPressed = true;
                     }
@@ -92,22 +90,22 @@ void MainMenu::ProcessInput() {
     }
 }
 
-void MainMenu::Update(sf::Time deltaTime) {
+void GameOver::Update(sf::Time deltaTime) {
 
 
-    if (m_isPlayButtonSelected) {
-        m_playButton.setFillColor(sf::Color::Green);
+    if (m_isRetryButtonSelected) {
+        m_retryButton.setFillColor(sf::Color::Green);
         m_exitButton.setFillColor(sf::Color::White);
 
     }else {
         m_exitButton.setFillColor(sf::Color::Red);
-        m_playButton.setFillColor(sf::Color::White);
+        m_retryButton.setFillColor(sf::Color::White);
 
     }
 
-    if (m_isPlayButtonPressed){
+    if (m_isRetryButtonPressed){
        
-        // Go to GamePlay state by replacing MainMenu state
+        // Go to GamePlay state by replacing GameOver state
         m_context->m_states->Add(std::make_unique<GamePlay>(m_context), true);
 
     } else if(m_isExitButtonPressed){
@@ -116,11 +114,11 @@ void MainMenu::Update(sf::Time deltaTime) {
 
 
 }
-void MainMenu::Draw() {
-
+void GameOver::Draw() {
+    
     m_context->m_window->clear();
-    m_context->m_window->draw(m_gameTitle);
-    m_context->m_window->draw(m_playButton);
+    m_context->m_window->draw(m_gameOverTitle);
+    m_context->m_window->draw(m_retryButton);
     m_context->m_window->draw(m_exitButton);
     m_context->m_window->display(); 
 }
