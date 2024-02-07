@@ -1,4 +1,5 @@
 #include "GamePlay.hpp"
+#include "GameOver.hpp"
 
 #include <SFML/Window/Event.hpp>
 
@@ -98,8 +99,9 @@ void GamePlay::Update(sf::Time deltaTime) {
 
         for (auto& wall : m_walls){
             if (m_snake.IsOn(wall)){  // if collision with wall
-                //TODO
-                // Game over
+        
+                // Game over state
+                m_context->m_states->Add(std::make_unique<GameOver>(m_context), true);
                 break;
             }
         }
