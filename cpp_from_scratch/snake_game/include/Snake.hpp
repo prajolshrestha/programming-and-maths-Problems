@@ -27,6 +27,7 @@ public:
     void Move(const sf::Vector2f& direction); //move the snake in given direction
     bool IsOn(const sf::Sprite& other) const; // snake collided with other object? eg. food or wall
     void Grow(const sf::Vector2f& direction); // Grow snake (at head in given direction)
+    bool IsSelfIntersecting() const;
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

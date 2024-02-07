@@ -4,6 +4,8 @@
 #include <array>
 
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/Text.hpp>
+
 
 #include "Game.hpp"
 #include "State.hpp"
@@ -27,6 +29,12 @@ class GamePlay : public Engine::State {
 
         // Timer
         sf::Time m_elapsedTime;
+
+        // Score
+        sf::Text m_scoreText;
+        int m_score;
+
+        bool m_isPaused;
 
     public:
         GamePlay(std::shared_ptr<Context> &context);
