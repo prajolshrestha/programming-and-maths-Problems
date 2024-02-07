@@ -2,7 +2,7 @@
 
 ## Programming
 - Matlab from scratch [For Image processing]
-- Python from scratch [complete but periodic revision]
+- Python from scratch [periodic revision]
 - C programming [working...]
 - C++ from scratch [complete and working on project...]
 - Assembly from scratch
@@ -19,6 +19,7 @@
 
 ## Mathematics 
 - Linear algebra from scratch in Python [advanced]
+- Abstract algebra [not started yet]
 
 
 
