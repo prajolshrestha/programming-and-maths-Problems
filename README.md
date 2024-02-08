@@ -3,8 +3,9 @@
 ## Programming
 - Matlab from scratch [For signal (image & audio) processing]
 - Python from scratch [periodic revision]
-- C programming [working...]
+- C from scratch [working...]
 - C++ from scratch [basics completed and working on projects...]
+    - Snake game using SFML [Complete]
 - Assembly from scratch
     - x86-32bit assembly [basics completed]
     - x86-64bit assembly
