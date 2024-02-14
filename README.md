@@ -9,17 +9,19 @@
 - Assembly from scratch
     - x86-32bit assembly [basics completed]
     - x86-64bit assembly
+- Data Structures from scratch [Revision started]
 - Rust from scratch [basics started]
 
 ## Accelerated Computing
-- Parallel cpp
+- Parallel cpp [Basics Started]
     - Basics  
     - OpenMP
     - MPI
 - CUDA 
 
 ## Mathematics 
-- Linear algebra from scratch in Python [advanced]
+- Linear algebra from scratch in Python [advanced completed & Revision required]
+- Geometry from scratch in Python [basics started]
 - Abstract algebra [not started yet]
 
 
