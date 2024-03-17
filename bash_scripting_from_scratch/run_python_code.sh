@@ -1,9 +1,10 @@
 #!/bin/bash
 
-cd ${HOME}/DeepSolo
-ls
-python --version #conda activate deepsolo
-echo "We are inside code base and all set to visualize a map data."
+set -x
 
-cd adet/data/datasets
-python ./testmap3.py
+cd ${HOME}/programming-and-maths-Problems/bash_scripting_from_scratch
+
+python --version
+echo "We are inside code base and all set to visualize a bezier curve."
+
+python ./curve_utils.py
