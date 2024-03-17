@@ -11,6 +11,7 @@
     - x86-64bit assembly
 - Data Structures from scratch [Revision started]
 - Rust from scratch [basics started]
+- Bash Script from scratch for automation [basics completed]
 
 ## Accelerated Computing
 - Parallel cpp [Basics Started]
