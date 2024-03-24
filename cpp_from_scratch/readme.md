@@ -1,7 +1,7 @@
 ## C++:
 
 - Basics [done]
-- Software Development Basics [working..]
+- Software Development Basics [Done]
   - Compilers
   - Decoders
   - Build Systems
