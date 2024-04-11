@@ -18,7 +18,7 @@
     - Basics  
     - OpenMP
     - MPI
-- CUDA 
+- CUDA [Basics Started]
 
 ## Mathematics 
 - Linear algebra from scratch in Python [advanced completed & Revision required]
