@@ -66,6 +66,7 @@ def run_mpc_simulation():
     controls = []
     
     # Current state
+    # Create a copy of the initial state to avoid modifying x0 during MPC iterations
     x = x0.copy()
     
     # MPC loop
