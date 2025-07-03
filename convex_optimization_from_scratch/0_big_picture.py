@@ -20,6 +20,8 @@ ax1.plot(x, y_convex, 'r-', linewidth=2)
 ax1.grid(True, alpha=0.3)
 ax1.set_xlim(-3, 3)
 ax1.set_ylim(-0.5, 4)
+ax1.set_xlabel('x', fontsize=12)
+ax1.set_ylabel('f(x)', fontsize=12)
 
 # Mark the global minimum for convex function
 min_idx_convex = np.argmin(y_convex)
@@ -31,6 +33,8 @@ ax2.plot(x, y_nonconvex, 'r-', linewidth=2)
 ax2.grid(True, alpha=0.3)
 ax2.set_xlim(-3, 3)
 ax2.set_ylim(-0.5, 4)
+ax2.set_xlabel('x', fontsize=12)
+ax2.set_ylabel('f(x)', fontsize=12)
 
 # Find local minima for non-convex function
 local_min_indices = argrelextrema(y_nonconvex, np.less, order=20)[0]
